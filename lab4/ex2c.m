@@ -1,48 +1,20 @@
 function [] = ex2c(Amplitude0, Frequency0, Phase0, SamplingFrequency0, SamplingFrequency1)
-    t = linspace(0,0.05,1001);
-    % x1 = Amplitude0 .* cos(2*pi*Frequency0 .*t + Phase0);
-
-    v = 0;
-
-    temp = 2*pi*(Frequency0/SamplingFrequency0);
-    if temp > pi
-        while temp >pi
-            temp = temp-2*pi;
-            v = v-1;
-            if temp < pi
-                break;
-            end
-        end
-    elseif temp <=-pi
-        while temp <= -pi
-            temp = temp+2*pi;
-            v = v+1;
-            if temp > -pi
-                break;
-            end
-        end
-    end
-    Theta0 = abs(temp);
-
-    Frequency1 = (Theta0 * SamplingFrequency1)/(2*pi);
-    Phase1 = Phase0 + v*2*pi;
-
-    if Phase1 > 2*pi
-        while Phase1 > 2*pi
-            Phase1 = Phase1-2*pi;
-            if temp < pi
-                break;
-            end
-        end
-    elseif Phase1 <= -2*pi
-        while Phase1 <= -pi
-                Phase1 = Phase1+2*pi;
-            if Phase1 > -pi
-                break;
-            end
-        end
+    theta = Frequency0/SamplingFrequency0;
+    a = (theta - round(theta));
+    if a == -0.5
+        a = 0.5;
     end
 
-    xnew = Amplitude0* cos(2*pi*Frequency1.* t + Phase1);
-    plot(t,xnew)
+    if a < 0
+        Phase1 = -Phase0;
+        a = -a;
+    else
+        Phase1 = Phase0;
+    end
+
+    Frequency1 = a*SamplingFrequency1;
+    t = linspace(0, 0.05, 1001);
+    y = Amplitude0*cos(2*pi*Frequency1*t + Phase1);
+
+    plot(t,y)
 end

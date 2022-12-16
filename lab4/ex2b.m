@@ -1,4 +1,25 @@
 function [ Frequency1,Phase1 ] = ex2b (SamplingFrequency0, SamplingFrequency1)
+    theta = 175/SamplingFrequency0;
+    a = (theta - round(theta));
+    if a == -0.5
+        a = 0.5;
+    end
+
+    if a < 0
+        Phase1 = -pi/3;
+        a = -a;
+    else
+        Phase1 = pi/3;
+    end
+
+    Frequency1 = a*SamplingFrequency1;
+    t = linspace(0, 0.1, 1001);
+    y = cos(2*pi*Frequency1*t + Phase1);
+
+    plot(t,y)
+
+    %%  OR  %%
+
     t = linspace(0,0.1,1001);
     %x = cos(2*pi*175.*t+ p/3);
 
