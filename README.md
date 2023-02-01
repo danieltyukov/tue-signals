@@ -1,7 +1,6 @@
-# NOTE
+# Eindhoven University of Technology Matlab Exercises - 2022 🎶
 
-As it seems that the repository is getting a lot of traction.
+## NOTE 📝
+Most Exercises are MOSTLY correct, so use it for reference.
 
-I was advices to write that please use it for the sake of checking and writing your own code but not copying.
-
-## Consider staring the repo as well
+### Consider staring the repo as well ⭐
